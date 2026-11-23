@@ -44,6 +44,7 @@
   },
   "site": {
     "name": "Ana Example",
+    "pdf": true,
     "description": "CV of Ana Example",
     "head": ["<link rel=\"stylesheet\" href=\"./css/style.css\" />"],
     "nav": [{"label": "GitHub", "url": "https://github.com/ana-example", "icon": "github"}],
