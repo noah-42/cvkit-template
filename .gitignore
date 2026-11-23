@@ -6,3 +6,6 @@ cv.pdf
 # Personal details for your own PDF only
 private.json
 private/
+*.bak
+*.polish.json
+*.flagged.json
