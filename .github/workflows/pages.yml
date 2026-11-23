@@ -1,0 +1,45 @@
+name: Build and publish the CV
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  CVKIT: git+https://github.com/noah-42/cvkit@v0.2.0
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10
+      - name: Check the data
+        run: uvx --from "$CVKIT" cvkit check .
+      - name: Build the pages
+        run: uvx --from "$CVKIT" cvkit build . --out _site
+      - name: Make the PDF
+        run: uvx --from "$CVKIT" cvkit pdf . --out _site/cv.pdf
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5

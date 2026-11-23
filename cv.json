@@ -1,0 +1,65 @@
+{
+  "headline": "Data engineer who builds calm, reliable pipelines",
+  "summary": [
+    "Seven years building data pipelines at Example Logistics and Sample Health.",
+    "Student at Demo Coding School, learning C and systems programming."
+  ],
+  "projects": [
+    {
+      "name": "Tidewatch",
+      "desc": "A small tool that reads tide tables and plans harbour work, written in Python.",
+      "url": "https://example.com/tidewatch",
+      "desc_links": {"Python": "https://www.python.org"}
+    }
+  ],
+  "experience": [
+    {
+      "heading_parts": [{"text": "Data Engineer"}, {"text": "Example Logistics", "url": "https://example.com"}],
+      "location": "Lisbon (Mar 2021&ndash;present)",
+      "bullets": [
+        "Moved 40 nightly jobs at Example Logistics to one scheduler, cutting failures by half.",
+        "Built the shipment tracking feed used by S&atilde;o Paulo &amp; Lisbon teams."
+      ]
+    },
+    {
+      "heading_parts": [{"text": "Analyst"}, {"text": "Sample Health"}],
+      "location": "Porto (Jan 2018&ndash;Feb 2021)",
+      "bullets": []
+    }
+  ],
+  "education": [
+    {
+      "heading_parts": [{"text": "Student"}, {"text": "Demo Coding School", "url": "https://example.org"}],
+      "location": "Lisbon (Sep 2025&ndash;present)"
+    }
+  ],
+  "skills": [
+    {"label": "Languages", "items": ["Python", "SQL", "C"]},
+    {"label": "Tools", "items": ["git", "Linux (Debian)"]}
+  ],
+  "languages": "Portuguese (native), English (fluent)",
+  "contact": {
+    "lines": ["GitHub: github.com/ana-example", "Web: ana.example.com"],
+    "links": []
+  },
+  "site": {
+    "name": "Ana Example",
+    "description": "CV of Ana Example",
+    "head": ["<link rel=\"stylesheet\" href=\"./css/style.css\" />"],
+    "nav": [{"label": "GitHub", "url": "https://github.com/ana-example", "icon": "github"}],
+    "autolink": {
+      "summary": [{"find": "Demo Coding School", "replace": "<a class=\"plain-link\" href=\"https://example.org\" target=\"_blank\" rel=\"noopener\">Demo Coding School</a>"}],
+      "bullet_links": {"Example Logistics": "https://example.com"},
+      "skill_links": {"Python": "https://www.python.org"},
+      "skill_links_partial": {"Linux": "https://kernel.org"}
+    },
+    "contact": {
+      "urls": {"github.com/ana-example": "https://github.com/ana-example", "ana.example.com": "https://ana.example.com"},
+      "icons": {"GitHub": "github"}
+    },
+    "ats": {
+      "contact_line": ["Lisbon", "github.com/ana-example", "ana.example.com"],
+      "contact_list": ["GitHub: github.com/ana-example", "Web: ana.example.com"]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+# Built by GitHub Actions, never committed
+_site/
+index.html
+ats/
+cv.pdf
+# Personal details for your own PDF only
+private.json
+private/
