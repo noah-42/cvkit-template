@@ -45,6 +45,7 @@
   "site": {
     "name": "Ana Example",
     "pdf": true,
+    "print": {"font": "mono", "start_pt": 10.5, "min_pt": 10, "max_pages": 2},
     "description": "CV of Ana Example",
     "head": ["<link rel=\"stylesheet\" href=\"./css/style.css\" />"],
     "nav": [{"label": "GitHub", "url": "https://github.com/ana-example", "icon": "github"}],
