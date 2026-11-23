@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  CVKIT: git+https://github.com/noah-42/cvkit@v0.2.3
+  CVKIT: git+https://github.com/noah-42/cvkit@v0.3.0
 
 jobs:
   build:
