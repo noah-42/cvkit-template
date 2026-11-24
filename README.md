@@ -8,6 +8,7 @@ ATS page (`/ats/`) and a PDF (`/cv.pdf`), published on GitHub Pages.
 1. Name this repository `<your-username>.github.io` (or any name; then the site is at `<you>.github.io/<name>/`).
 2. In the repository settings, under Pages, set Source to **GitHub Actions**.
 3. Edit `cv.json` and push. The Action checks the data, builds the pages and the PDF, and publishes them.
+   (The run started when the repository was created ends with "Almost there": Pages was not on yet. That is fine.)
 
 ## Work on it locally
 

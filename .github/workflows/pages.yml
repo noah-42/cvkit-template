@@ -15,11 +15,13 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  CVKIT: git+https://github.com/noah-42/cvkit@v0.5.2
+  CVKIT: git+https://github.com/noah-42/cvkit@v0.5.3
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      pages_on: ${{ steps.pages.outputs.on }}
     steps:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v10.4.0
@@ -29,13 +31,30 @@ jobs:
         run: uvx --from "$CVKIT" cvkit build . --out _site
       - name: Make the PDF
         run: uvx --from "$CVKIT" cvkit pdf . --out _site/cv.pdf
-      - uses: actions/configure-pages@v6
-      - uses: actions/upload-pages-artifact@v5
+      - name: Is GitHub Pages turned on?
+        id: pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh api "repos/${{ github.repository }}/pages" >/dev/null 2>&1; then
+            echo "on=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "on=false" >> "$GITHUB_OUTPUT"
+            msg="Your CV built fine, but GitHub Pages is not turned on yet, so nothing was published. In this repository open Settings, then Pages, set Source to GitHub Actions, then run this workflow again (Actions tab, Run workflow) or commit a change."
+            echo "::warning::$msg"
+            echo "### Almost there" >> "$GITHUB_STEP_SUMMARY"
+            echo "$msg" >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - if: steps.pages.outputs.on == 'true'
+        uses: actions/configure-pages@v6
+      - if: steps.pages.outputs.on == 'true'
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
   deploy:
     needs: build
+    if: needs.build.outputs.pages_on == 'true'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
